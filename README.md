@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=1120ff&height=150&section=header&text=iUniverse&fontColor=ffffff" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=1120ff&height=150&section=header&text=iUniverse Content API&fontColor=ffffff" />
 
 ### 🎉 소개 - Introduction
 ---
@@ -45,12 +45,11 @@ Docker를 통해 컨네이터를 구축 및 API 통신을 통해 데이터를 �
 ### ✒ 주로 사용된 기술 - Unsing Skill
 ---
 <div>
-  <img src="https://img.shields.io/badge/Spring-000?logo=nextdotjs&logoColor=fff&style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Jpa-007ACC?style=for-the-badge&logo=typescript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=Spring-Security&logoColor=white"/>
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"/>
+  <img src="https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white"/>  
 </div>
  
 
-### ✏ 그외 사용한 API
----
-KaKaoAPI, GoogleAPI, toastUI
 <img src="https://capsule-render.vercel.app/api?type=waving&color=1120ff&height=150&section=footer" />
