@@ -25,6 +25,7 @@ PM : 김태호
 ### 🌈 구성 요소
 ---
 iUniverse는 1개의 FrontEnd, 2개의 BackEnd, 1개의 데이터 구성되었습니다.
+
 Docker를 통해 컨네이터를 구축 및 API 통신을 통해 데이터를 주고 받습니다.
 
 해당 파트는 BackEnd 입니다.
