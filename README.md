@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=1120ff&height=150&section=header&text=iUniverse Content API&fontColor=ffffff" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=1120ff&height=150&section=header&text=iUniverse-Content-API&fontColor=ffffff" />
 
 ### 🎉 소개 - Introduction
 ---
