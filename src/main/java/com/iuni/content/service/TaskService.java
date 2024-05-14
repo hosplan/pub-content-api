@@ -121,7 +121,9 @@ public class TaskService {
             updateTask.setEditorNickName(nickName);
             taskRepository.save(updateTask);
 
+
             taskMemberMapRepository.updatePreviousEditor("JOIN", task.getId());
+
             taskMemberMapRepository.updateNewEditor("editor", task.getId(), memberId);
 
             return true;

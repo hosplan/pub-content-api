@@ -34,7 +34,7 @@ public interface TaskMemberMapRepository extends JpaRepository<TaskMemberMap, Lo
 
     @Modifying
     @Transactional
-    @Query(value="UPDATE task_member_map SET map_type =:mapType WHERE task_id =:taskId AND member_id =:memberId", nativeQuery = true)
+    @Query(value="UPDATE task_member_map SET map_type =:mapType WHERE task_id =:taskId AND member_id =:memberId AND map_type !='owner'", nativeQuery = true)
     int updateNewEditor(@Param(value="mapType") String mapType, @Param(value="taskId") Long taskId, @Param(value="memberId") Long memberId);
 
     @Modifying
