@@ -125,6 +125,7 @@ public class TaskMemberMapService {
 
     public int removeByMemberId(Long memberId){
         try{
+            System.out.println("memberId = " + memberId);
             return this.taskMemberMapRepository.deleteMapByMemberId(memberId);
         }
         catch(Exception e){
