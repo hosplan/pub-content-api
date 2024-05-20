@@ -1,13 +1,16 @@
 package com.iuni.content.controller;
 
+import com.iuni.content.domain.Board;
 import com.iuni.content.domain.Task;
 import com.iuni.content.helper.jwt.JWT;
 import com.iuni.content.service.TaskService;
+import com.iuni.content.service.TrashBasketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -15,6 +18,7 @@ import java.util.Map;
 @RequestMapping("/conts/task")
 public class TaskController{
     private final TaskService taskService;
+    private final TrashBasketService trashBasketService;
     private final JWT jwt;
 
     @GetMapping()
@@ -43,5 +47,17 @@ public class TaskController{
     @DeleteMapping()
     public Boolean remove(@RequestParam("id") Long id){
         return taskService.remove(id);
+    }
+
+    @PatchMapping("/trash")
+    public HashMap<String, String> moveTrash(@RequestParam("id") Long id){
+
+        HashMap<String, String> result = new HashMap<>();
+        result = this.taskService.moveTrash(id);
+        if(result.get("result").equals("fail")){
+            return result;
+        }
+        result = trashBasketService.createTrash(id,0);
+        return result;
     }
 }

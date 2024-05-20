@@ -2,6 +2,7 @@ package com.iuni.content.service;
 
 
 
+import com.iuni.content.domain.Board;
 import com.iuni.content.domain.Task;
 import com.iuni.content.domain.TaskMemberMap;
 import com.iuni.content.helper.common.ErrorLog;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Optional;
 
 @Service("taskService")
@@ -19,6 +21,7 @@ import java.util.Optional;
 public class TaskService {
     private final TaskRepository taskRepository;
     private final TaskMemberMapRepository taskMemberMapRepository;
+    private TrashBasketService trashBasketService;
 
     private final ErrorLog errorLog;
 
@@ -139,6 +142,42 @@ public class TaskService {
         }
         catch(Exception e){
             throw e;
+        }
+    }
+
+
+    public HashMap<String, String> moveTrash(Long id){
+        HashMap<String, String> result = new HashMap<>();
+        try{
+            Optional<Task> optTask = taskRepository.findById(id);
+            if(optTask.isPresent()){
+                Task updateTask = optTask.get();
+                updateTask.setIsDelete(true);
+                taskRepository.save(updateTask);
+                result.put("result", "success");
+                return result;
+            }
+            result.put("result", "fail");
+            return result;
+        }
+        catch(Exception e){
+            result.put("result", "fail");
+            return result;
+        }
+    }
+    public Boolean restore(Long id){
+        try{
+            Optional<Task> optTask = taskRepository.findById(id);
+            if(optTask.isPresent()){
+                Task updateTask = optTask.get();
+                updateTask.setIsDelete(false);
+                taskRepository.save(updateTask);
+                return true;
+            }
+            return false;
+        }
+        catch(Exception e){
+            return false;
         }
     }
 }

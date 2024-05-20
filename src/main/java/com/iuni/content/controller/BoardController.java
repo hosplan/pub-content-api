@@ -3,6 +3,7 @@ package com.iuni.content.controller;
 import com.iuni.content.domain.Board;
 import com.iuni.content.helper.jwt.JWT;
 import com.iuni.content.service.BoardService;
+import com.iuni.content.service.TrashBasketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ import java.util.Map;
 @RequestMapping("/conts/board")
 public class BoardController {
     private final BoardService boardService;
+    private final TrashBasketService trashBasketService;
 
     private final JWT jwt;
 
@@ -46,7 +48,16 @@ public class BoardController {
     }
 
     @PatchMapping("/trash")
-    public HashMap<String, String> moveTrash(@RequestBody Board data){ return this.boardService.moveTrash(data); }
+    public HashMap<String, String> moveTrash(@RequestBody Board data){
+        HashMap<String, String> result = new HashMap<>();
+        result = this.boardService.moveTrash(data);
+        if(result.get("result").equals("fail")){
+            return result;
+        }
+        result = trashBasketService.createTrash(data.getId(),1);
+        return result;
+
+    }
 
     @DeleteMapping()
     public Boolean remove(@RequestParam("id") Long id) {

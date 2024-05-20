@@ -12,6 +12,7 @@ import java.util.Optional;
 @Service("boardService")
 public class BoardService {
     private final BoardRepository boardRepository;
+    private TrashBasketService trashBasketService;
 
     public BoardService(BoardRepository boardRepository){
         this.boardRepository = boardRepository;
@@ -81,8 +82,25 @@ public class BoardService {
             return result;
         }
         catch(Exception e){
+            System.out.println("e = " + e);
             result.put("result", "fail");
             return result;
+        }
+    }
+
+    public Boolean restore(Long id){
+        try{
+            Optional<Board> optBoard = boardRepository.findById(id);
+            if(optBoard.isPresent()){
+                Board updateBoard = optBoard.get();
+                updateBoard.setDelete(false);
+                boardRepository.save(updateBoard);
+                return true;
+            }
+            return false;
+        }
+        catch(Exception e){
+            return false;
         }
     }
 

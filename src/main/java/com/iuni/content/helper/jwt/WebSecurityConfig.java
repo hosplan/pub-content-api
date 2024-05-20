@@ -33,7 +33,7 @@ public class WebSecurityConfig {
                         authorize
                                 .requestMatchers("conts/member/**", "conts/signIn/**", "conts/trashBasket/**").permitAll()
                                 .requestMatchers("conts/taskMemberMap/share", "conts/task/share", "conts/comment", "conts/comment/**").hasAuthority("USER")
-                                .requestMatchers("conts/task/**", "conts/board/**", "conts/status/**", "conts/boardTaskMap/**", "conts/taskMemberMap/**").hasAnyAuthority("USER", "TEMPUSER")
+                                .requestMatchers("conts/task/**", "conts/board/**", "conts/status/**", "conts/boardTaskMap/**", "conts/taskMemberMap/**", "conts/trashBasket/**").hasAnyAuthority("USER", "TEMPUSER")
                                 .anyRequest().denyAll()
                 )
                 .addFilterBefore(new JwtAuthFilter(jwt), UsernamePasswordAuthenticationFilter.class)
