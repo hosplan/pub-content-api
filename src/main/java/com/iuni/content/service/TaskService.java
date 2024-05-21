@@ -58,8 +58,9 @@ public class TaskService {
         try{
             ArrayList<JoinTask> dataList = this.taskRepository.findAllByBoardId(boardId);
             ArrayList<Task> result = new ArrayList<>();
-
+            
             for(JoinTask data : dataList){
+                
                 System.out.println(data.getStartDate().orElse(null));
                 Task task = new Task();
                 task.setId(data.getId());
@@ -91,6 +92,7 @@ public class TaskService {
 
     public Task create(Task task, Long memberId){
         try{
+            task.setIsDelete(false);
             Task result = this.taskRepository.save(task);
             TaskMemberMap taskMemberMap = new TaskMemberMap();
             taskMemberMap.setTask(result);
