@@ -28,5 +28,6 @@ public interface JoinTrash {
     Boolean getIsShared();
 
 
-
+    Integer getType();
+    Long getTrashId();
 }
